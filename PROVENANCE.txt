@@ -1,0 +1,38 @@
+PROVENANCE of the witnesses (search runs; not needed for verification)
+
+Each witness is the sequence found by the search (symbols 0..n-1) with the symbols renamed 1..n in order of
+first appearance.  Sources and logs are in search/:
+  search/sa.c        first annealer (recomputes the count of missing permutations after every move)
+  search/sa2.c       second annealer (heat-bath sweeps using the split evaluation); built twice:
+                       sa2_32:  cc -O3 -DCT=uint32_t -o sa2_32 sa2.c -lm
+                       sa2_64:  cc -O3 -o sa2_64 sa2.c -lm
+  search/gen_t2.py   prints x s1 x ... x sn x for the list T2(n) of Tan 2022 (start sequence for n = 13)
+  search/logs/       standard output (.out; lines 'FOUND n=.. L=.. : sequence') and standard error (.err)
+                     of the runs named below
+Arguments of sa2: n, target length, seed, time limit in seconds, start file, T0, T1, sweeps per cycle.
+A start file '-' means the built-in construction of length (n-1)^2+3 (Schoenfield, OEIS A062714 comments).
+Arguments of sa: n, target length, seed, time limit in seconds; it always starts from that construction.
+The binaries used were built with 'clang -O3 -march=native' on an Apple M2.
+
+n = 11, length 101
+  renaming (search symbol -> witness symbol): 0->8, 1->10, 2->9, 3->2, 4->11, 5->1, 6->3, 7->4, 8->5, 9->6, 10->7
+  found by:   ./sa2_32 11 96 11 2400 best/n11.txt 0.25 0.01 1000        (search/logs/s11_a.out, line 2 of its FOUND lines)
+  start file: the sequence of length 102 found earlier by   ./sa 11 95 1 900   (search/logs/r11_1.out)
+
+n = 12, length 121
+  renaming (search symbol -> witness symbol): 0->12, 1->1, 2->7, 3->4, 4->6, 5->9, 6->5, 7->2, 8->3, 9->11, 10->8, 11->10
+  found by:   ./sa2_32 12 112 11 2400 best/n12.txt 0.25 0.01 1500        (search/logs/s12_a.out, line 2 of its FOUND lines)
+  start file: the sequence of length 122 found earlier by   ./sa 12 114 2 900   (search/logs/r12_2.out)
+
+n = 13, length 144
+  renaming (search symbol -> witness symbol): 0->4, 1->5, 2->7, 3->3, 4->6, 5->9, 6->12, 7->11, 8->10, 9->13, 10->2, 11->1, 12->8
+  found by:   ./sa2_64 13 135 21 3000 start/t2_13.txt 0.25 0.01 600        (search/logs/u13_t.out, line 2 of its FOUND lines)
+  start file: output of   python3 search/gen_t2.py 13   (length 145)
+
+n = 14, length 169
+  renaming (search symbol -> witness symbol): 0->12, 1->14, 2->2, 3->11, 4->4, 5->13, 6->9, 7->5, 8->1, 9->6, 10->8, 11->10, 12->7, 13->3
+  found by:   ./sa2_64 14 150 11 2400 - 0.25 0.01 300        (search/logs/s14_a.out, line 4 of its FOUND lines)
+
+n = 15, length 196
+  renaming (search symbol -> witness symbol): 0->7, 1->8, 2->10, 3->11, 4->2, 5->9, 6->13, 7->6, 8->15, 9->4, 10->1, 11->3, 12->12, 13->14, 14->5
+  found by:   ./sa2_64 15 188 21 3000 - 0.25 0.01 200        (search/logs/u15_a.out, line 4 of its FOUND lines)

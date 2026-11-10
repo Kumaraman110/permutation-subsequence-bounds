@@ -1,0 +1,110 @@
+{
+  "format_version": 1,
+  "limitation": "These uploaded logs are internally consistent. The original runner did not record input/source hashes, so they do not independently bind the historical runs to the current files.",
+  "records": {
+    "11": {
+      "current_witness_sha256": "c3aee7e84e6b30e2dec96e752b33c328d2f2d9646fa7758b01bcddade27f2c51",
+      "files": [
+        "legacy_evidence/EXPECTED_OUTPUT.txt"
+      ],
+      "historical_input_and_source_hash_binding": false,
+      "length": 101,
+      "missing_reported": 0,
+      "n": 11,
+      "permutations_reported": 39916800,
+      "recomputed_in_this_review": false,
+      "status": "archived_report_consistent"
+    },
+    "12": {
+      "current_witness_sha256": "aee92a3fc487f644858b1ff58f2b682ad2d23e2aea5c3bf1f8f975b7ab3f1158",
+      "files": [
+        "legacy_evidence/EXPECTED_OUTPUT.txt"
+      ],
+      "historical_input_and_source_hash_binding": false,
+      "length": 121,
+      "missing_reported": 0,
+      "n": 12,
+      "permutations_reported": 479001600,
+      "recomputed_in_this_review": false,
+      "status": "archived_report_consistent"
+    },
+    "13": {
+      "current_witness_sha256": "3e5c85e3221c53ea18aa5b3d214b01a90469282d3963b00d25d460dc23f8ff00",
+      "files": [
+        "legacy_evidence/brute_n13.jobs/1.txt",
+        "legacy_evidence/brute_n13.jobs/2.txt",
+        "legacy_evidence/brute_n13.jobs/3.txt",
+        "legacy_evidence/brute_n13.jobs/4.txt",
+        "legacy_evidence/brute_n13.jobs/5.txt",
+        "legacy_evidence/brute_n13.jobs/6.txt",
+        "legacy_evidence/brute_n13.jobs/7.txt",
+        "legacy_evidence/brute_n13.jobs/8.txt",
+        "legacy_evidence/brute_n13.jobs/9.txt",
+        "legacy_evidence/brute_n13.jobs/10.txt",
+        "legacy_evidence/brute_n13.jobs/11.txt",
+        "legacy_evidence/brute_n13.jobs/12.txt",
+        "legacy_evidence/brute_n13.jobs/13.txt"
+      ],
+      "historical_input_and_source_hash_binding": false,
+      "length": 144,
+      "missing_reported": 0,
+      "n": 13,
+      "permutations_reported": 6227020800,
+      "recomputed_in_this_review": false,
+      "status": "archived_report_consistent"
+    },
+    "14": {
+      "current_witness_sha256": "8da25191894f255a3c35cb398bd444e6111bb71fe13dd51cd2e940bb7293ec3d",
+      "files": [
+        "legacy_evidence/brute_n14.jobs/1.txt",
+        "legacy_evidence/brute_n14.jobs/2.txt",
+        "legacy_evidence/brute_n14.jobs/3.txt",
+        "legacy_evidence/brute_n14.jobs/4.txt",
+        "legacy_evidence/brute_n14.jobs/5.txt",
+        "legacy_evidence/brute_n14.jobs/6.txt",
+        "legacy_evidence/brute_n14.jobs/7.txt",
+        "legacy_evidence/brute_n14.jobs/8.txt",
+        "legacy_evidence/brute_n14.jobs/9.txt",
+        "legacy_evidence/brute_n14.jobs/10.txt",
+        "legacy_evidence/brute_n14.jobs/11.txt",
+        "legacy_evidence/brute_n14.jobs/12.txt",
+        "legacy_evidence/brute_n14.jobs/13.txt",
+        "legacy_evidence/brute_n14.jobs/14.txt"
+      ],
+      "historical_input_and_source_hash_binding": false,
+      "length": 169,
+      "missing_reported": 0,
+      "n": 14,
+      "permutations_reported": 87178291200,
+      "recomputed_in_this_review": false,
+      "status": "archived_report_consistent"
+    },
+    "15": {
+      "current_witness_sha256": "dc978b4b0b8406e354f727afc01af36c0602c9aa3d7504775faa0d940d7d2de9",
+      "files": [
+        "legacy_evidence/brute_n15.jobs/1.txt",
+        "legacy_evidence/brute_n15.jobs/2.txt",
+        "legacy_evidence/brute_n15.jobs/3.txt",
+        "legacy_evidence/brute_n15.jobs/4.txt",
+        "legacy_evidence/brute_n15.jobs/5.txt",
+        "legacy_evidence/brute_n15.jobs/6.txt",
+        "legacy_evidence/brute_n15.jobs/7.txt",
+        "legacy_evidence/brute_n15.jobs/8.txt",
+        "legacy_evidence/brute_n15.jobs/9.txt",
+        "legacy_evidence/brute_n15.jobs/10.txt",
+        "legacy_evidence/brute_n15.jobs/11.txt",
+        "legacy_evidence/brute_n15.jobs/12.txt",
+        "legacy_evidence/brute_n15.jobs/13.txt",
+        "legacy_evidence/brute_n15.jobs/14.txt",
+        "legacy_evidence/brute_n15.jobs/15.txt"
+      ],
+      "historical_input_and_source_hash_binding": false,
+      "length": 196,
+      "missing_reported": 0,
+      "n": 15,
+      "permutations_reported": 1307674368000,
+      "recomputed_in_this_review": false,
+      "status": "archived_report_consistent"
+    }
+  }
+}

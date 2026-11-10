@@ -1,0 +1,16 @@
+.DS_Store
+._*
+__pycache__/
+*.py[cod]
+/verify_dp
+/verify_brute
+/sa
+/sa2
+/sa2_32
+/sa2_64
+/search/sa
+/search/sa2
+/search/sa2_32
+/search/sa2_64
+/brute_n*.jobs/
+/BRUTE_MANIFEST.json

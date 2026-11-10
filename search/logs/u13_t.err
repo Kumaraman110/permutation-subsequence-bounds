@@ -1,0 +1,45 @@
+n=13 start L=145 missing=0 target=135 T0=0.25 T1=0.01 cyc=600
+[0s] now L=144 missing=3584
+[15s] L=144 cycle 1: cur missing=22 best=22
+[29s] L=144 cycle 2: cur missing=96 best=22
+[44s] L=144 cycle 3: cur missing=25 best=22
+[58s] L=144 cycle 4: cur missing=23 best=22
+[72s] L=144 cycle 5: cur missing=24 best=22
+[86s] L=144 cycle 6: cur missing=195 best=22
+[101s] L=144 cycle 7: cur missing=117 best=22
+[115s] L=144 cycle 8: cur missing=32 best=22
+[130s] L=144 cycle 9: cur missing=20 best=20
+[142s] now L=143 missing=2759
+[157s] L=143 cycle 1: cur missing=605 best=562
+[179s] L=143 cycle 2: cur missing=59 best=59
+[194s] L=143 cycle 3: cur missing=210 best=59
+[207s] L=143 cycle 4: cur missing=1674 best=59
+[220s] L=143 cycle 5: cur missing=39 best=39
+[232s] L=143 cycle 6: cur missing=2283 best=39
+[244s] L=143 cycle 7: cur missing=4416 best=39
+[257s] L=143 cycle 8: cur missing=280 best=39
+[269s] L=143 cycle 9: cur missing=355 best=39
+[281s] L=143 cycle 10: cur missing=115 best=39
+[294s] L=143 cycle 11: cur missing=88 best=39
+[306s] L=143 cycle 12: cur missing=37 best=36
+[318s] L=143 cycle 13: cur missing=126 best=36
+[330s] L=143 cycle 14: cur missing=73 best=36
+[343s] L=143 cycle 15: cur missing=2769 best=36
+[355s] L=143 cycle 16: cur missing=158 best=36
+[367s] L=143 cycle 17: cur missing=47 best=36
+[380s] L=143 cycle 18: cur missing=235 best=36
+[392s] L=143 cycle 19: cur missing=1911 best=36
+[404s] L=143 cycle 20: cur missing=1423 best=36
+[416s] L=143 cycle 21: cur missing=332 best=36
+[429s] L=143 cycle 22: cur missing=322 best=36
+[441s] L=143 cycle 23: cur missing=228 best=36
+[454s] L=143 cycle 24: cur missing=177 best=36
+[466s] L=143 cycle 25: cur missing=85 best=36
+[478s] L=143 cycle 26: cur missing=406 best=36
+[490s] L=143 cycle 27: cur missing=109 best=36
+[503s] L=143 cycle 28: cur missing=2197 best=36
+[515s] L=143 cycle 29: cur missing=220 best=36
+[529s] L=143 cycle 30: cur missing=68 best=36
+[542s] L=143 cycle 31: cur missing=148 best=36
+[555s] L=143 cycle 32: cur missing=408 best=36
+[567s] L=143 cycle 33: cur missing=208 best=36

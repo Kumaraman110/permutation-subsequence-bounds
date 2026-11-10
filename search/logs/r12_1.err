@@ -1,0 +1,6 @@
+n=12 start L=124 missing=0 target=114
+[0s] now L=123 missing=512
+[113s] L=123 cycle done: cur missing=1 best=1
+[230s] L=123 cycle done: cur missing=1 best=1
+[351s] L=123 cycle done: cur missing=1 best=1
+[483s] L=123 cycle done: cur missing=1 best=1

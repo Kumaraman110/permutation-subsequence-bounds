@@ -1,0 +1,1 @@
+A web search and an arXiv search for this problem made on the same date found no smaller values for 11 ≤ n ≤ 15.

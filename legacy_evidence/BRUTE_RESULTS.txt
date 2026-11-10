@@ -1,0 +1,3 @@
+n=13 length=144 jobs=13 permutations examined=6227020800 expected=6227020800 missing=0 => ALL PRESENT
+n=14 length=169 jobs=14 permutations examined=87178291200 expected=87178291200 missing=0 => ALL PRESENT
+n=15 length=196 jobs=15 permutations examined=1307674368000 expected=1307674368000 missing=0 => ALL PRESENT

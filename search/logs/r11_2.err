@@ -1,0 +1,9 @@
+n=11 start L=103 missing=0 target=95
+[0s] now L=102 missing=256
+[20s] now L=101 missing=90
+[84s] L=101 cycle done: cur missing=12 best=12
+[150s] L=101 cycle done: cur missing=24 best=12
+[219s] L=101 cycle done: cur missing=4 best=4
+[287s] L=101 cycle done: cur missing=8 best=4
+[359s] L=101 cycle done: cur missing=24 best=4
+[435s] L=101 cycle done: cur missing=12 best=4

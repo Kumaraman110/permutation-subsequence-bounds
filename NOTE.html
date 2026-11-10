@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Permutation-complete sequences: research draft</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Permutation-complete sequences: research draft</h1>
+</header>
+<h1
+id="explicit-upper-bounds-for-permutation-complete-sequences-at-n-11-12-13-14-15">Explicit
+upper bounds for permutation-complete sequences at n = 11, 12, 13, 14,
+15</h1>
+<p>Revised draft of 10 November 2026, prepared for independent review
+and as supporting material for an OEIS contribution. Contributor: Kumar
+Aman. The original search and draft were prepared with Claude
+(Anthropic); this revision and independent checks were prepared with
+Codex (OpenAI). These tools are not listed as authors; see §7.</p>
+<p>Submission status as of 10 November 2026: a comment and supporting
+file were submitted to OEIS A062714 by Kumar Aman. The supporting file
+was revised following usability feedback and the update was marked
+proposed in revision 139. Editorial approval is pending. The revised
+attachment is https://oeis.org/A062714/a062714_1.txt.</p>
+<h2 id="statement">1. Statement</h2>
+<p>Write [n] = {1, 2, …, n}. A finite sequence w over [n] is
+<strong>complete</strong> if each of the n! permutations of [n] is a
+subsequence of w (its terms occur in w in the same order, not
+necessarily adjacently). Let a(n) be the least length of a complete
+sequence over [n]. This is OEIS A062714 [OEIS]; the problem is
+attributed to R. M. Karp [CKK72, Problem 36]. The OEIS entry lists a(1),
+…, a(9) = 1, 3, 7, 12, 19, 28, 39, 52, 66 and no further terms.</p>
+<p><strong>Theorem.</strong> a(11) ≤ 101, a(12) ≤ 121, a(13) ≤ 144,
+a(14) ≤ 169 and a(15) ≤ 196.</p>
+<p><em>Proof.</em> The sequences W11, …, W15 printed in §3 have these
+lengths and each of them is complete. Completeness of a given sequence
+is a finite verification; §4 gives a proved recurrence verifying all
+five witnesses, independent exact checks reproduced in this review, and
+additional archived direct-enumeration reports. ∎</p>
+<p><strong>Corollary.</strong> a(n) ≤ (n − 1)² for every n ≥ 12.</p>
+<p><em>Proof.</em> W12, W13, W14, W15 have lengths 11², 12², 13², 14².
+For n ≥ 16 use Radomirović’s bound a(n) ≤ ⌈n² − 7n/3 + 19/3⌉ [Rad12]:
+because (n − 1)² is an integer, ⌈n² − 7n/3 + 19/3⌉ ≤ (n − 1)² is
+equivalent to n² − 7n/3 + 19/3 ≤ n² − 2n + 1, that is, to n ≥ 16. ∎</p>
+<p>W11 has length 101 = 10² + 1, so n = 11 is not covered by the
+Corollary. For n ≤ 9 the known values satisfy a(n) &gt; (n − 1)². For n
+= 10 and n = 11 the constructions compared here give upper bounds 83 and
+101, against 81 and 100; these constructions do not establish the square
+bound for either alphabet size.</p>
+<p><strong>Not claimed.</strong> (i) <em>Optimality.</em> These are
+upper bounds. No lower bound is proved here, and a(n) is not known for
+any n ≥ 10. (ii) <em>Priority.</em> §2 compares with the bounds found in
+the literature and in the OEIS on 10 November 2026. Whether equally
+short or shorter sequences had been found earlier and not published
+where we looked is a separate question, which this note cannot
+settle.</p>
+<h2 id="comparison-with-published-upper-bounds">2. Comparison with
+published upper bounds</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>n</th>
+<th>length of W_n</th>
+<th>n² − 2n + 4</th>
+<th>[Zal11] n² − 2n + 3</th>
+<th>[Rad12] ⌈n² − 7n/3 + 19/3⌉</th>
+<th>[Tan22] Thm 23, s ≥ 2</th>
+<th>smallest among cited constructions</th>
+<th>improvement</th>
+<th>(n − 1)²</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>11</td>
+<td><strong>101</strong></td>
+<td>103</td>
+<td>102</td>
+<td>102</td>
+<td>—</td>
+<td>102</td>
+<td>1</td>
+<td>100</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td><strong>121</strong></td>
+<td>124</td>
+<td>123</td>
+<td>123</td>
+<td>—</td>
+<td>123</td>
+<td>2</td>
+<td>121</td>
+</tr>
+<tr class="odd">
+<td>13</td>
+<td><strong>144</strong></td>
+<td>147</td>
+<td>146</td>
+<td>145</td>
+<td>145 (s = 2)</td>
+<td>145</td>
+<td>1</td>
+<td>144</td>
+</tr>
+<tr class="even">
+<td>14</td>
+<td><strong>169</strong></td>
+<td>172</td>
+<td>171</td>
+<td>170</td>
+<td>170 (s = 3)</td>
+<td>170</td>
+<td>1</td>
+<td>169</td>
+</tr>
+<tr class="odd">
+<td>15</td>
+<td><strong>196</strong></td>
+<td>199</td>
+<td>198</td>
+<td>197</td>
+<td>—</td>
+<td>197</td>
+<td>1</td>
+<td>196</td>
+</tr>
+</tbody>
+</table>
+<p>The published bounds used, with their stated ranges (n is always the
+alphabet size):</p>
+<ul>
+<li>n² − 2n + 4 for n ≥ 3: Newey [New73]; also Adleman [Adl74], Koutas
+and Hu [KH75], Galbiati and Preparata [GP76], Mohanty [Moh80]. Newey
+showed that this is the exact value for 3 ≤ n ≤ 7.</li>
+<li>n² − 2n + 3 for n ≥ 10: Zălinescu [Zal11].</li>
+<li>⌈n² − 7n/3 + 19/3⌉ for n ≥ 7: Radomirović [Rad12].</li>
+<li>Tan [Tan22]. The theorem numbering and formulas here refer to
+arXiv:2201.06306v2, revised 4 January 2025; the journal version appeared
+in 2022. That version of the preprint writes m for the alphabet size and
+states the hypotheses of its Theorem 23 for n = m − 1 (namely n ≥ 4s + 1
+and n ≡ 3 (mod 2s − 1)); below everything is restated for the alphabet
+size, called n here, and s ≥ 1 is an integer parameter.
+<ul>
+<li>Theorem 23: if n ≥ 4s + 2 and n ≡ 4 (mod 2s − 1), then a(n) ≤ n² −
+((5s − 3)/(2s − 1))·n + (2s² + 9s − 7)/(2s − 1). For s = 1 this is n² −
+2n + 4; for s = 2 it is n² − 7n/3 + 19/3, with n ≡ 1 (mod 3) and n ≥
+10.</li>
+<li>Theorem 26: if n ≥ 4s + 2, then a(n) ≤ ⌈n² − ((5s − 3)/(2s − 1))·n +
+(4s³ − 10s² + 21s − 11)/(2s − 1)⌉.</li>
+<li>Theorem 28: for every n, a(n) ≤ ⌈n² − (5/2)n + (3/2)(n/2)^(2/3) +
+(n/2)^(1/3) + 7⌉.</li>
+</ul>
+For 11 ≤ n ≤ 15 the only instances of Theorem 23 with s ≥ 2 are (n, s) =
+(13, 2), giving 145, and (14, 3), giving 170. Theorems 26 and 28 give
+values larger than [Rad12] for every n from 10 to 20.</li>
+</ul>
+<p>Hence the smallest upper bounds among the cited constructions for n =
+11, …, 15 are 102, 123, 145, 170, 197, each of them given by [Rad12].
+<code>python3 prior_bounds.py</code> evaluates all the formulas above,
+with their conditions, for 10 ≤ n ≤ 20.</p>
+<p>Exact values. a(n) for 3 ≤ n ≤ 7 is due to Newey [New73]. a(8) = 52
+was proved by Tan [Tan25]. a(9) = 66 is recorded in [OEIS] as computed
+by V. Garnashevich (October 2025).</p>
+<h2 id="the-witnesses">3. The witnesses</h2>
+<p>Each sequence is written with the symbols 1, …, 9, a, b, c, d, e, f,
+where a, …, f stand for 10, …, 15 (the convention already used in the
+comments of the OEIS entry). Spaces and line breaks are for readability
+only. The sequences are normalized so that the symbols make their first
+appearances in increasing order; relabelling the alphabet does not
+affect completeness.</p>
+<p><strong>W11</strong> (n = 11, length 101)</p>
+<pre><code>123456789a b321458769 2a3b147582 693a41b572 89634a1527
+b83964a125 7389b4621a 53798142b6 3a59748123 b6a5798142
+3</code></pre>
+<p><strong>W12</strong> (n = 12, length 121)</p>
+<pre><code>123456789a bc12457863 a92b1c5674 832a91b754 6c823a1954
+7b628c31a5 49726b813c a54729618b 3a54c27916 845a3b2c91
+768354a21b c9a6738452 1</code></pre>
+<p><strong>W13</strong> (n = 13, length 144)</p>
+<pre><code>123456789a bcd1623579 48cba1d327 56498c1b6a d75324918c
+6b3d57a219 486c75b3d1 2a9468753c b1d29a6457 83c1bd269a
+537841c6db 297583a614 c2bd798531 6ac4b8d259 7163</code></pre>
+<p><strong>W14</strong> (n = 14, length 169)</p>
+<pre><code>123456789a bcde832164 57abc9d243 8e6157bac3 924d85617e
+ba3c249d81 5673abe24c 89d16537ba 42e8c61d39 5b7a2468e1
+c3d5927ba4 86c13ed257 b984316ac2 de57b48613 9a2c5de746
+831b29a5dc e361b7842</code></pre>
+<p><strong>W15</strong> (n = 15, length 196)</p>
+<pre><code>123456789a bcdef14863 527bad9ce1 f4263785bd a9c1e7f324
+86db591acf 43782eb1d6 594a38f27c 1bde654987 3a2f1cdbe6
+4538972a1f dcb465e372 891afdb54c 6e7382194f ba5d7c836e
+2149b5fa36 7c8d214e59 bfca367814 2d5f9bea37 c26184</code></pre>
+<p>The same sequences as whitespace-separated integers are in
+<code>witnesses/n11.txt</code>, …, <code>witnesses/n15.txt</code>. The
+proposed OEIS supporting file <code>a062714.txt</code> supplies literal
+Python lists, the function <code>complete(w, n)</code>, and executable
+examples; the identical program is also provided as
+<code>a062714.py</code>. Run <code>python3 a062714.txt</code> or
+<code>python3 a062714.py</code> without editing. SHA-256 of the
+whitespace-separated witness files:</p>
+<pre><code>c3aee7e84e6b30e2dec96e752b33c328d2f2d9646fa7758b01bcddade27f2c51  witnesses/n11.txt
+aee92a3fc487f644858b1ff58f2b682ad2d23e2aea5c3bf1f8f975b7ab3f1158  witnesses/n12.txt
+3e5c85e3221c53ea18aa5b3d214b01a90469282d3963b00d25d460dc23f8ff00  witnesses/n13.txt
+8da25191894f255a3c35cb398bd444e6111bb71fe13dd51cd2e940bb7293ec3d  witnesses/n14.txt
+dc978b4b0b8406e354f727afc01af36c0602c9aa3d7504775faa0d940d7d2de9  witnesses/n15.txt</code></pre>
+<h2 id="verification">4. Verification</h2>
+<h3 id="direct-enumeration">4.1 Direct enumeration</h3>
+<p><code>verify_brute.c</code> examines every permutation of [n]. It
+walks the tree of prefixes depth-first, matching each further letter at
+the leftmost position after the previous match. By the Fact below, a
+prefix is a subsequence of w exactly when this matching does not run off
+the end. So every permutation is individually found present (it is
+reached as a leaf) or missing (it lies below a prefix that failed, and
+all completions of that prefix are then counted as missing). The program
+prints the number of permutations examined, which must equal n!, and the
+number missing. It uses no dynamic programming.</p>
+<h3 id="a-subset-recurrence">4.2 A subset recurrence</h3>
+<p>Let w = w₁w₂…w_L. For 0 ≤ p ≤ L and x ∈ [n] let next(p, x) be the
+least q with p &lt; q ≤ L and w_q = x, and let next(p, x) = ∞ if there
+is no such q; also put next(∞, x) = ∞. For a sequence τ of distinct
+letters define end(τ) recursively by end(empty sequence) = 0 and end(τx)
+= next(end(τ), x).</p>
+<p><strong>Fact (leftmost embedding).</strong> τ is a subsequence of w
+if and only if end(τ) &lt; ∞, and then end(τ) is the smallest position
+at which an occurrence of τ in w can end.</p>
+<p><em>Proof.</em> Induction on the length of τ; the empty sequence is
+clear. Suppose τx occurs in w at positions i₁ &lt; … &lt; i_k &lt; i
+(with i₀ = 0 when τ is empty). Then τ occurs ending at i_k, so by
+induction end(τ) ≤ i_k &lt; i; since w_i = x, next(end(τ), x) ≤ i. Hence
+end(τx) &lt; ∞ and end(τx) is at most the end of any occurrence.
+Conversely, if end(τx) &lt; ∞ then end(τ) &lt; ∞, and appending the
+position end(τx) to an occurrence of τ that ends at end(τ) gives an
+occurrence of τx ending at end(τx). ∎</p>
+<p>For A ⊆ [n] let E(A) be the maximum of end(τ) over all orderings τ of
+A, with E(∅) = 0.</p>
+<p><strong>Lemma 1.</strong> For every non-empty A ⊆ [n], E(A) = max
+over x ∈ A of next(E(A ∖ {x}), x). Consequently w is complete if and
+only if E([n]) ≤ L, and E([n]) can be computed with O(n·2ⁿ) evaluations
+of next.</p>
+<p><em>Proof.</em> For fixed x the map p ↦ next(p, x) is non-decreasing
+on {0, 1, …, L, ∞}, because enlarging p shrinks the set of admissible q.
+The orderings of A that end in x are exactly the τx with τ an ordering
+of A ∖ {x}; therefore the maximum of end(τx) = next(end(τ), x) over
+these τ equals next(max end(τ), x) = next(E(A ∖ {x}), x). Taking the
+maximum over x ∈ A gives the recurrence. By the Fact, w is complete if
+and only if end(τ) &lt; ∞ for every ordering τ of [n], that is, E([n])
+&lt; ∞, that is, E([n]) ≤ L. ∎</p>
+<p><code>verify_dp.c</code> and <code>verify.py</code> are two separate
+implementations of this recurrence, with L + 1 in the role of ∞. When a
+sequence is not complete, <code>verify.py</code> also reconstructs from
+the recurrence a specific permutation τ with end(τ) = ∞ and confirms by
+a direct scan that it is not a subsequence.</p>
+<p>The standalone Python function <code>complete(w, n)</code> in
+<code>a062714.py</code> uses an explicit positive alphabet size and has
+no fixed upper bound on n. Its dynamic tables require O(nL + 2ⁿ) memory
+and O(nL + n·2ⁿ) worst-case time for a word of length L. Large alphabets
+may therefore be impractical; a resource failure does not certify
+incompleteness. For example,
+<code>complete([1, 2, 3, 1, 2, 1, 3], 3)</code> returns
+<code>True</code>, while <code>complete([1, 2, 3], 3)</code> returns
+<code>False</code>. The full supporting file can be run directly and
+prints these examples followed by the results for all five
+witnesses.</p>
+<h3 id="results">4.3 Results</h3>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>n</th>
+<th>length L</th>
+<th>n!</th>
+<th>direct enumeration (<code>verify_brute</code>)</th>
+<th>recurrence, C (<code>verify_dp</code>)</th>
+<th>recurrence, Python (<code>verify.py</code>)</th>
+<th>irreducible</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>11</td>
+<td>101</td>
+<td>39,916,800</td>
+<td>archived report (not rerun): 39,916,800 examined, 0 missing</td>
+<td>complete, E([n]) = 101</td>
+<td>complete, E([n]) = 101</td>
+<td>yes (0 of 101 single deletions stay complete)</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>121</td>
+<td>479,001,600</td>
+<td>archived report (not rerun): 479,001,600 examined, 0 missing</td>
+<td>complete, E([n]) = 121</td>
+<td>complete, E([n]) = 121</td>
+<td>yes (0 of 121 single deletions stay complete)</td>
+</tr>
+<tr class="odd">
+<td>13</td>
+<td>144</td>
+<td>6,227,020,800</td>
+<td>archived report (not rerun): 6,227,020,800 examined, 0 missing</td>
+<td>complete, E([n]) = 144</td>
+<td>complete, E([n]) = 144</td>
+<td>yes (0 of 144 single deletions stay complete)</td>
+</tr>
+<tr class="even">
+<td>14</td>
+<td>169</td>
+<td>87,178,291,200</td>
+<td>archived report (not rerun): 87,178,291,200 examined, 0 missing</td>
+<td>complete, E([n]) = 169</td>
+<td>complete, E([n]) = 169</td>
+<td>yes (0 of 169 single deletions stay complete)</td>
+</tr>
+<tr class="odd">
+<td>15</td>
+<td>196</td>
+<td>1,307,674,368,000</td>
+<td>archived report (not rerun): 1,307,674,368,000 examined, 0
+missing</td>
+<td>complete, E([n]) = 196</td>
+<td>complete, E([n]) = 196</td>
+<td>yes (0 of 196 single deletions stay complete)</td>
+</tr>
+</tbody>
+</table>
+<p>The direct-enumeration column labels the provenance of its run
+records. The uploaded archive includes completed reports for all 15
+first-letter jobs at n = 15, with a total of 1,307,674,368,000
+permutations and zero reported missing; the original generated draft had
+not incorporated those completed files.
+<code>audit_legacy_runs.py</code> checks every archived job’s alphabet
+size, length, first letter, expected count and aggregate. These
+historical computations were not rerun in this review. Their original
+wrapper did not record witness/source hashes, so the archived logs do
+not independently establish which exact file bytes were used. They are
+retained as historical supporting reports, separate from the fresh exact
+checks below. Fresh runs made with the repaired wrapper are hash-bound
+to input and source snapshots.</p>
+<p>“Irreducible” means that deleting any single term leaves a sequence
+that is not complete; <code>verify_dp --irreducible</code> checks this
+for every position. It is a statement of local minimality only and does
+not show that no shorter complete sequence exists.</p>
+<p>Negative controls: for each witness, the sequence with its last term
+removed is reported as not complete, together with an explicit missing
+permutation (see <code>EXPECTED_OUTPUT.txt</code>).</p>
+<h3 id="how-to-reproduce">4.4 How to reproduce</h3>
+<p>Requirements for the full default checks: a POSIX shell; a C compiler
+available as <code>cc</code> (GCC or Clang; <code>verify_brute.c</code>
+uses <code>__builtin_ctz</code> and <code>__builtin_popcount</code>);
+Python 3.8 or later (standard library only); <code>shasum</code> or
+<code>sha256sum</code>; and, for <code>run_brute_parallel.sh</code>,
+Python handles parallel jobs and integer-exact aggregation. The existing
+command-line checkers retain an operational limit n ≤ 20; the C checkers
+additionally limit sequences to 2000 terms. These implementation limits
+do not apply to the standalone Python function in
+<code>a062714.py</code>. The optional independent counting checker
+requires Python 3.10 or newer.</p>
+<pre><code>python3 a062714.py                           # Python-only examples and all five witness checks
+sh run_all.sh                                # fast default: checksums, bounds, both recurrence checkers,
+                                             # irreducibility and negative controls; no factorial enumeration
+BRUTE_MAX=12 sh run_all.sh                   # optional slow direct enumeration for n = 11 and 12
+sh run_all.sh | diff - EXPECTED_OUTPUT.txt   # the output is deterministic; no difference is expected
+sh run_brute_parallel.sh 13 4                # brute force for n = 13: 13 jobs (one per first letter), 4 at a time
+sh run_brute_parallel.sh 14 4                # n = 14: 87,178,291,200 permutations
+sh run_brute_parallel.sh 15 4                # n = 15: 1,307,674,368,000 permutations (hours of CPU time)</code></pre>
+<p><code>run_brute_parallel.sh</code> uses
+<code>resumable_brute.py</code>, prints a one-line total, and records it
+in <code>BRUTE_RESULTS.txt</code> and <code>BRUTE_MANIFEST.json</code>.
+Each run uses a cache keyed by the witness bytes, verifier source and
+compilation environment. Its n first-letter jobs leave validated results
+under <code>brute_nN.jobs/run-&lt;fingerprint&gt;/</code>; only results
+for that matching run can be resumed. A failed worker or
+malformed/incomplete result makes the runner fail, and counts are
+aggregated with exact Python integers. Original unbound logs are kept in
+<code>legacy_evidence/</code> and are never reused as fresh cached
+results. A single file can be checked with
+<code>python3 verify.py FILE</code>, <code>./verify_dp FILE</code> or
+<code>./verify_brute FILE</code>. All three take n to be the largest
+symbol in the file, require each of the symbols 1, …, n to occur, and
+print n; a reader checking a file of their own should make sure that the
+printed n is the intended one. <code>build_note.py</code> regenerates
+this note, the OEIS guide and the supporting file from the witness
+files, the templates and the recorded program outputs
+(<code>EXPECTED_OUTPUT.txt</code>, <code>BRUTE_RESULTS.txt</code>), so
+that no sequence and no table entry is copied by hand. Run
+<code>python3 build_note.py</code> after refreshing the recorded check
+output. Regeneration checks archived-report consistency and validates
+hash-bound enumeration records when present.</p>
+<h3 id="independent-checks-reproduced-in-this-review">4.5 Independent
+checks reproduced in this review</h3>
+<p>The portable programs in <code>independent_review/</code> were
+written separately from the uploaded search and checker implementations.
+<code>count_by_endpoint.py</code> groups distinct permutation prefixes
+by their earliest embedding endpoints and counts each ordering once; it
+obtained exactly n! embedded permutations, and zero missing, for every
+witness. <code>reverse_greedy.py</code> computes the earliest starting
+point among rightmost embeddings over subsets and also found every
+witness complete. Its implementation agrees with explicit permutation
+enumeration on 1,227 small test words.</p>
+<p>A separate C++ checker tested all 731 possible single-term deletions
+across the five witnesses. Every deletion destroyed completeness. For
+each deletion it reconstructed a missing permutation and independently
+confirmed absence by scanning the shortened word. The certificate files
+and commands are included in <code>independent_review/</code>. These
+fresh checks establish the theorem without requiring a repeat of the
+historical trillion-permutation enumeration. They are exact
+computations, not sampling and not proof-assistant formalization.</p>
+<h2 id="how-the-witnesses-were-found">5. How the witnesses were
+found</h2>
+<p>This section is not needed for the Theorem. The sequences came from
+simulated annealing on the exact number of permutations that are not
+subsequences. The search started from published constructions (the
+construction of length (n − 1)² + 3 described by J. E. Schoenfield in
+the comments of the OEIS entry, or the list T₂ of [Tan22]) and
+alternated between deleting the term whose removal leaves the fewest
+permutations missing and repair sweeps at the shorter length. The count
+is kept exact by dynamic programming over subsets: counting versions of
+the tables of §4.2, for prefixes and for suffixes, allow the candidate
+letters at one site to be scored with O(n·2ⁿ) operations when the needed
+prefix/suffix tables are available. Building those tables or refreshing
+invalidated rows can cost O(L·2ⁿ); the smaller bound is not an
+end-to-end claim for arbitrary cache rebuilding. The search programs and
+the logs of the runs that produced the five witnesses are in
+<code>search/</code>, and <code>PROVENANCE.txt</code> lists them. The
+searches used pseudo-random numbers and floating-point acceptance tests;
+they are not expected to be reproducible bit for bit on another
+machine.</p>
+<h2 id="remarks">6. Remarks</h2>
+<ul>
+<li>The same search did not improve the published bounds 83 for n = 10
+and 225 for n = 16: runs at lengths 82 and 224 ended with a few
+permutations still missing. This is an observation about one heuristic
+and is not evidence of optimality.</li>
+<li>Each witness is irreducible in the sense of §4.3.</li>
+<li>Literature and priority. The versions of OEIS A062714 and A136094
+retrieved during this review list exact lengths and representative
+sequences only through n = 9. A351468 records Newey’s general
+construction. We evaluated the cited bounds of Zălinescu, Radomirović
+and Tan under their stated hypotheses; the smallest resulting bounds for
+n = 11, …, 15 are respectively 102, 123, 145, 170, 197. Targeted web and
+arXiv searches did not identify earlier sequences as short as the five
+witnesses given here. These checks establish improvements over the
+inspected constructions, but do not establish first discovery or exclude
+unindexed or unpublished work.</li>
+</ul>
+<h2 id="provenance-and-status">7. Provenance and status</h2>
+<p>The original search programs, checkers and draft were prepared with
+Claude (Anthropic) in a contributor-directed session on an Apple M2
+laptop, as reported in the supplied package. The current note was
+revised and additional independent checks were reproduced with Codex
+(OpenAI) in a Linux cloud workspace. Original reported execution history
+is kept distinct from the checks reproduced in this review. The Theorem
+rests only on the five sequences of §3 and the finite checks of §4,
+which do not depend on how the sequences were produced. No independent
+human mathematical peer review is claimed. Kumar Aman subsequently
+reproduced the default <code>sh run_all.sh</code> checks on his Mac and
+submitted a comment and supporting file to OEIS A062714 on 10 November
+2026. Following usability feedback from Andrew Howroyd, the supporting
+file was made directly runnable and the update was marked proposed in
+revision 139. Howroyd confirmed that the revised file was usable;
+editorial approval remains pending. Aman also ran the revised standalone
+Python file on his Mac and reproduced its examples and five successful
+witness checks. OEIS policy requires a human author who takes
+responsibility for a contribution and does not permit AI-written comment
+text; <code>OEIS_SUBMISSION_GUIDE.txt</code> gives the contributor facts
+and conventions.</p>
+<p>All internal reviewers were separate AI agent instances, not human
+referees. The uploaded package reports several earlier agent checks;
+their historical claims are preserved in
+legacy_evidence/review_note.txt. In the current review, independently
+written counting and reverse-greedy checkers verified all five
+witnesses; a separate implementation checked all 731 single-term
+deletions and directly validated each missing-permutation certificate.
+The math review found no defect in the upper-bound theorem, the all-n
+corollary or the subset recurrence. Citation review corrected the scope
+of the priority wording and the description of A351468, and tied Tan’s
+theorem numbers to arXiv v2. Code review found and repaired the
+brute-force wrapper’s failed-worker handling and stale-cache reuse. The
+repaired runner was tested on small fresh, resumed, failed and corrupted
+jobs. No human peer review, formal proof-assistant verification, journal
+acceptance or exhaustive priority guarantee is implied.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Adl74] L. Adleman, Short permutation strings, Discrete Mathematics
+10 (1974), 197–200.</li>
+<li>[CKK72] V. Chvátal, D. A. Klarner and D. E. Knuth, Selected
+combinatorial research problems, Report STAN-CS-72-292, Computer Science
+Department, Stanford University, June 1972; Problem 36.</li>
+<li>[GP76] G. Galbiati and F. P. Preparata, On permutation-embedding
+sequences, SIAM Journal on Applied Mathematics 30 (1976), 421–423.</li>
+<li>[KH75] P. J. Koutas and T. C. Hu, Shortest string containing all
+permutations, Discrete Mathematics 11 (1975), 125–132.</li>
+<li>[KK76] D. J. Kleitman and D. J. Kwiatkowski, A lower bound on the
+length of a sequence containing all permutations as subsequences,
+Journal of Combinatorial Theory, Series A 21 (1976), 129–136. (Cited for
+context only: a(n) ≥ n² − C_ε·n^(7/4+ε).)</li>
+<li>[Moh80] S. P. Mohanty, Shortest string containing all permutations,
+Discrete Mathematics 31 (1980), 91–95.</li>
+<li>[New73] M. Newey, Notes on a problem involving permutations as
+subsequences, Stanford Artificial Intelligence Laboratory Memo AIM-190,
+Report STAN-CS-73-340, 1973.</li>
+<li>[OEIS] OEIS Foundation Inc., The On-Line Encyclopedia of Integer
+Sequences, sequence A062714, https://oeis.org/A062714 (consulted 10
+November 2026).</li>
+<li>[Rad12] S. Radomirović, A construction of short sequences containing
+all permutations of a set as subsequences, Electronic Journal of
+Combinatorics 19(4) (2012), #P31.</li>
+<li>[Tan22] O. Tan, Skip letters for short supersequence of all
+permutations, Discrete Mathematics 345(12) (2022), article 113070,
+https://doi.org/10.1016/j.disc.2022.113070. Theorem numbering and
+formulas here follow the revised preprint arXiv:2201.06306v2, 4 January
+2025, https://arxiv.org/abs/2201.06306v2.</li>
+<li>[Tan25] O. Tan, Conjecture on supersequence lower bound related to
+Connell sequence, arXiv:2501.11386v1, 20 January 2025,
+https://arxiv.org/abs/2501.11386. Cited as a preprint; no journal
+version is claimed here.</li>
+<li>[Zal11] E. Zălinescu, Shorter strings containing all k-element
+permutations, Information Processing Letters 111 (2011), 605–608.</li>
+</ul>
+</body>
+</html>
