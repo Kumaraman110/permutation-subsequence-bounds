@@ -1,0 +1,20 @@
+{
+  "executable_txt_and_py_outputs_match": true,
+  "invalid_inputs_rejected": 8,
+  "literal_witnesses_match_canonical_files": true,
+  "n21_check_seconds": 3.736,
+  "n21_complete_example_passed": true,
+  "output": [
+    "complete(W3, 3) = True",
+    "complete([1, 2, 3], 3) = False",
+    "complete(W3, 4) = False",
+    "n=11 length=101 complete=True",
+    "n=12 length=121 complete=True",
+    "n=13 length=144 complete=True",
+    "n=14 length=169 complete=True",
+    "n=15 length=196 complete=True"
+  ],
+  "python_files_identical": true,
+  "small_words_compared_with_direct_enumeration": 1227,
+  "syntax_valid": true
+}

@@ -1,0 +1,21 @@
+n=15 start L=199 missing=0 target=188 T0=0.25 T1=0.01 cyc=200
+[0s] now L=198 missing=4096
+[34s] L=198 cycle 1: cur missing=12 best=12
+[67s] L=198 cycle 2: cur missing=2527 best=12
+[99s] now L=197 missing=2263
+[132s] L=197 cycle 1: cur missing=95 best=95
+[172s] now L=196 missing=62930
+[205s] L=196 cycle 1: cur missing=5057 best=4802
+[233s] L=196 cycle 2: cur missing=22 best=22
+[260s] L=196 cycle 3: cur missing=328 best=22
+[289s] L=196 cycle 4: cur missing=867 best=22
+[317s] L=196 cycle 5: cur missing=3831 best=22
+[345s] L=196 cycle 6: cur missing=29 best=22
+[374s] L=196 cycle 7: cur missing=24 best=22
+[402s] L=196 cycle 8: cur missing=6729 best=22
+[430s] L=196 cycle 9: cur missing=310 best=22
+[458s] L=196 cycle 10: cur missing=459 best=22
+[486s] L=196 cycle 11: cur missing=128 best=22
+[514s] L=196 cycle 12: cur missing=7 best=7
+[526s] now L=195 missing=21576
+[555s] L=195 cycle 1: cur missing=5940 best=5339

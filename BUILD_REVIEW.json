@@ -1,0 +1,67 @@
+{
+  "clean_default_run_matches_expected": true,
+  "compact_python_support_checker_updated": true,
+  "contributor": "Kumar Aman",
+  "editor_feedback_addressed": [
+    "literal Python witness lists",
+    "runnable small usage examples",
+    "no fixed upper cap in compact Python function"
+  ],
+  "generated_document_sha256": {
+    "NOTE.md": "e86e24275efc75a137db1b9f55252807b8cfa237418a55e16756047dbbd5fa08",
+    "OEIS_SUBMISSION_GUIDE.txt": "a34e1df7ed523b578a7befae7cdc2ffb901ee1a7b21509d350a39313af92ac50",
+    "a062714.py": "6972c2bb7440d19c3458b3f3a87cc07a25d8276f4b95afc8cc1d3288ff67ab2e",
+    "a062714.txt": "6972c2bb7440d19c3458b3f3a87cc07a25d8276f4b95afc8cc1d3288ff67ab2e"
+  },
+  "generated_documents_deterministic": true,
+  "github_copy_default_run_matches_expected": true,
+  "independent_exact_checks_agree": true,
+  "matches_user_pasted_oeis_code_ignoring_final_newline": true,
+  "oeis_status_as_of_release": {
+    "approval_pending": true,
+    "entry": "A062714",
+    "revision": 139,
+    "status": "proposed"
+  },
+  "oeis_supporting_attachment": "https://oeis.org/A062714/a062714_1.txt",
+  "original_standalone_verifier_sources_unchanged": true,
+  "release_preparation_date": "2026-11-10",
+  "runnable_support_file_review": "SUPPORT_FILE_REVIEW.json",
+  "witnesses": [
+    {
+      "length": 101,
+      "missing": 0,
+      "n": 11,
+      "permutations_contained": 39916800,
+      "sha256": "c3aee7e84e6b30e2dec96e752b33c328d2f2d9646fa7758b01bcddade27f2c51"
+    },
+    {
+      "length": 121,
+      "missing": 0,
+      "n": 12,
+      "permutations_contained": 479001600,
+      "sha256": "aee92a3fc487f644858b1ff58f2b682ad2d23e2aea5c3bf1f8f975b7ab3f1158"
+    },
+    {
+      "length": 144,
+      "missing": 0,
+      "n": 13,
+      "permutations_contained": 6227020800,
+      "sha256": "3e5c85e3221c53ea18aa5b3d214b01a90469282d3963b00d25d460dc23f8ff00"
+    },
+    {
+      "length": 169,
+      "missing": 0,
+      "n": 14,
+      "permutations_contained": 87178291200,
+      "sha256": "8da25191894f255a3c35cb398bd444e6111bb71fe13dd51cd2e940bb7293ec3d"
+    },
+    {
+      "length": 196,
+      "missing": 0,
+      "n": 15,
+      "permutations_contained": 1307674368000,
+      "sha256": "dc978b4b0b8406e354f727afc01af36c0602c9aa3d7504775faa0d940d7d2de9"
+    }
+  ]
+}
